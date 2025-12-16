@@ -1,73 +1,44 @@
-# React + TypeScript + Vite
+# 🎓 Akademik Araştırma Asistanı (Academic Research Agent)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Bu proje, akademik süreçleri hızlandırmak amacıyla geliştirilmiş, **Mikroservis Mimarisine** dayalı modern bir web uygulamasıdır. 
 
-Currently, two official plugins are available:
+Proje, araştırmacılara literatür taraması, istatistiksel analiz ve makale yazımı konularında yardımcı olan 3 farklı yapay zeka ajanından oluşur.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+## 🚀 Özellikler (Ajanlar)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### 1. 📚 Literatür Analiz Ajanı (Literature Agent)
+* **Görevi:** Akademik metinleri tarar ve matematiksel formülleri (LaTeX formatında) ayıklar.
+* **Teknoloji:** Python (Regex & Text Processing).
+* **Kullanım:** Metni yapıştırın, `$E=mc^2$` gibi formülleri anında listelesin.
 
-## Expanding the ESLint configuration
+### 2. 📊 İstatistik Analiz Ajanı (Statistics Agent)
+* **Görevi:** Büyük veri setlerini (CSV/Excel) işleyerek anlamlılık testleri (t-test simülasyonu) yapar.
+* **Çıktı:** Sonuçları bilimsel standartlara uygun **APA 7 Formatında** (örn: *p < .001*) raporlar.
+* **Teknoloji:** Python (Data Simulation & Formatting).
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### 3. ⚖️ Hakem/Reviewer Ajanı (Abstract Check)
+* **Görevi:** Makale özetlerini (Abstract) yapısal olarak denetler.
+* **Kontroller:** Kelime sayısı (150-300 arası), Anahtar kelimeler (Amaç, Yöntem, Sonuç) ve genel yapı.
+* **Çıktı:** 100 üzerinden puanlama ve detaylı geri bildirim raporu.
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+---
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## 🛠️ Teknolojiler
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+Bu proje **Client-Server (İstemci-Sunucu)** mimarisi ile geliştirilmiştir.
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### Frontend (Ön Yüz)
+* **Framework:** React 18
+* **Dil:** TypeScript
+* **Build Tool:** Vite
+* **Stil:** Tailwind CSS
+* **İkonlar:** Lucide React
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### Backend (Arka Yüz)
+* **Framework:** FastAPI (Python)
+* **Sunucu:** Uvicorn
+* **Özellikler:** CORS, Pydantic Models, Async/Await
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+---
